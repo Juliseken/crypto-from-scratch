@@ -2,8 +2,6 @@ package de.juliseken.scytale.math;
 
 import org.junit.jupiter.api.Test;
 
-import de.juliseken.scytale.math.NumberTheory;
-
 import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
