@@ -1,6 +1,8 @@
-# Crypto From Scratch – RSA & ECC in Java
+# scytale
 
-This repository contains an **educational implementation of public-key cryptography**, built **from scratch in Java**.
+A spartan tool for learning cryptography from scratch.
+
+scytale is an **educational implementation of public-key cryptography**, built **from scratch in Java**.
 
 The goal of this project is **deep understanding**, not performance or production readiness.
 Core cryptographic concepts such as **RSA**, **Elliptic Curve Cryptography (ECC)** and **X.509 certificates** are implemented step by step, with a strong focus on the underlying **mathematics** and **theoretical foundations**.
