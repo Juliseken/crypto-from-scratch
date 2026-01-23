@@ -1,3 +1,3 @@
-package de.juliseken.scytale.api;
+package de.juliseken.scytale.key.api;
 
 public interface PrivateKey extends Key {}

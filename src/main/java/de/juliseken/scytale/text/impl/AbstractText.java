@@ -1,10 +1,10 @@
-package de.juliseken.scytale.text;
+package de.juliseken.scytale.text.impl;
 
 import java.math.BigInteger;
 
-import de.juliseken.scytale.api.Text;
+import de.juliseken.scytale.text.api.Text;
 
-public abstract class AbstractText implements de.juliseken.scytale.api.Text {
+public abstract class AbstractText implements de.juliseken.scytale.text.api.Text {
     private BigInteger content;
 
     public AbstractText(BigInteger content) {

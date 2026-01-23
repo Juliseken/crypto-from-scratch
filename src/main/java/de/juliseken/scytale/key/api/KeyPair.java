@@ -1,4 +1,4 @@
-package de.juliseken.scytale.api;
+package de.juliseken.scytale.key.api;
 
 public interface KeyPair {
     public PublicKey getPublicKey();

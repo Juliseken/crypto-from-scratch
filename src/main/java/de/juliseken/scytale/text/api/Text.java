@@ -1,4 +1,4 @@
-package de.juliseken.scytale.api;
+package de.juliseken.scytale.text.api;
 
 import java.math.BigInteger;
 
