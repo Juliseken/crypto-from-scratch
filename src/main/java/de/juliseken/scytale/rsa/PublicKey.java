@@ -1,9 +1,3 @@
 package de.juliseken.scytale.rsa;
 
-import java.math.BigInteger;
-
-public class PublicKey extends Key {
-    public PublicKey(BigInteger exponent, BigInteger modulus) {
-        super(exponent, modulus);
-    }
-}
+public interface PublicKey extends Key, de.juliseken.scytale.api.PublicKey {}

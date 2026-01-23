@@ -1,6 +1,6 @@
 package de.juliseken.scytale.rsa;
 
-public class KeyPair {
+public class KeyPair implements de.juliseken.scytale.api.KeyPair {
 
     private PrivateKey privateKey;
     private PublicKey publicKey;

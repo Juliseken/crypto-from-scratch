@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 import de.juliseken.scytale.rsa.KeyPair;
 import de.juliseken.scytale.rsa.KeyPairGenerator;
-import de.juliseken.scytale.rsa.RSAEncryption;
+import de.juliseken.scytale.rsa.Encryption;
 
 public class Scytale {
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class Scytale {
 
         System.out.println("Original message: " + message);
 
-        RSAEncryption rsaEncryption = new RSAEncryption();
+        Encryption rsaEncryption = new Encryption();
         BigInteger cipherText = rsaEncryption.encrypt(message, keyPair.getPublicKey());
 
         System.out.println("Encrypted message: " + cipherText);
