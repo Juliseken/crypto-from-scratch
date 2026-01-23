@@ -1,4 +1,4 @@
-package de.juliseken.scytale.rsa;
+package de.juliseken.scytale.rsa.api;
 
 import java.math.BigInteger;
 

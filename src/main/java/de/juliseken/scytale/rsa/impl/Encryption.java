@@ -1,8 +1,10 @@
-package de.juliseken.scytale.rsa;
+package de.juliseken.scytale.rsa.impl;
 
 import de.juliseken.scytale.api.CipherText;
 import de.juliseken.scytale.api.Message;
 import de.juliseken.scytale.api.PublicKeyEncryption;
+import de.juliseken.scytale.rsa.api.PrivateKey;
+import de.juliseken.scytale.rsa.api.PublicKey;
 import de.juliseken.scytale.text.CipherTextImpl;
 import de.juliseken.scytale.text.MessageImpl;
 
