@@ -3,17 +3,22 @@ package de.juliseken.scytale.rsa.impl;
 import java.math.BigInteger;
 
 import de.juliseken.scytale.key.api.KeyPairGenerator;
+import de.juliseken.scytale.math.api.NumberTheory;
 import de.juliseken.scytale.rsa.api.RSAPrivateKey;
 import de.juliseken.scytale.rsa.api.RSAPublicKey;
 
 public class RSAKeyPairGenerator implements KeyPairGenerator {
-    public RSAKeyPair generate() {
-        BigInteger p = new BigInteger("17");
-        BigInteger q = new BigInteger("11");
+    public RSAKeyPair generate(NumberTheory nt) {
+        BigInteger p = nt.generatePrime();
+        BigInteger q = nt.generatePrime();
+        while (p.equals(q)) {
+            q = nt.generatePrime();
+        }
         BigInteger n = p.multiply(q);
-        //BigInteger phi_n = p.min(BigInteger.ONE).multiply(q.min(BigInteger.ONE));
-        BigInteger e = new BigInteger("7");
-        BigInteger d = new BigInteger("23");
+        BigInteger phi_n = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
+        BigInteger e = nt.generateRelativePrime(phi_n);
+        // TODO: replace by own implementation
+        BigInteger d = e.modInverse(phi_n);
         RSAPrivateKey privateKey = new RSAPrivateKeyImpl(e, n);
         RSAPublicKey publicKey = new RSAPublicKeyImpl(d, n);
         return new RSAKeyPair(privateKey, publicKey);
