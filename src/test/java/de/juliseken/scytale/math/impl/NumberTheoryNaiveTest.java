@@ -24,6 +24,10 @@ public class NumberTheoryNaiveTest {
                 nt.gcd(BigInteger.valueOf(0), BigInteger.valueOf(10)),
                 BigInteger.valueOf(0).gcd(BigInteger.valueOf(10))
         );
+        assertEquals(
+                nt.gcd(BigInteger.valueOf(152881), BigInteger.valueOf(324539)),
+                BigInteger.valueOf(1)
+        );
     }
 
     @Test
@@ -57,5 +61,17 @@ public class NumberTheoryNaiveTest {
         BigInteger relativePrime = nt.generateRelativePrime(n);
         BigInteger gcd = nt.gcd(new BigInteger("10"), relativePrime);
         assertEquals(gcd, BigInteger.ONE);
+    }
+
+    @Test
+    public void testModInverse() {
+        NumberTheory nt = new NumberTheoryNaive();
+        BigInteger modulus = new BigInteger("105");
+        BigInteger n = new BigInteger("38");
+        assertEquals(n.modInverse(modulus), nt.modInverse(n, modulus));
+
+        modulus = new BigInteger("152881");
+        n = new BigInteger("324539");
+        assertEquals(n.modInverse(modulus), nt.modInverse(n, modulus));
     }
 }

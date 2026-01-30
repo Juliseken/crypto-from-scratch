@@ -50,8 +50,35 @@ public class NumberTheoryNaive implements NumberTheory {
         return e;
     }
 
-    public BigInteger getModInverse(BigInteger n, BigInteger modulus) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getModInverse'");
+    public BigInteger modInverse(BigInteger n, BigInteger modulus) {
+        assert(gcd(modulus, n).equals(BigInteger.ONE));
+
+        BigInteger r1 = modulus;
+        BigInteger x1 = BigInteger.ONE;
+        BigInteger y1 = BigInteger.ZERO;
+
+        BigInteger r2 = n;
+        BigInteger x2 = BigInteger.ZERO;
+        BigInteger y2 = BigInteger.ONE;
+
+        BigInteger r3 = r1.mod(r2);
+        BigInteger x3;
+        BigInteger y3;
+
+        while (!r3.equals(BigInteger.ZERO)) {
+            x3 = x1.subtract(r1.divide(r2).multiply(x2));
+            y3 = y1.subtract(r1.divide(r2).multiply(y2));
+
+            r1 = r2;
+            r2 = r3;
+            x1 = x2;
+            y1 = y2;
+            x2 = x3;
+            y2 = y3;
+
+            r3 = r1.mod(r2);
+        }
+
+        return y2;
     }
 }

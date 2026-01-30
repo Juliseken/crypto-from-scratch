@@ -7,5 +7,5 @@ public interface NumberTheory {
     boolean isPrime(BigInteger n);
     BigInteger generatePrime();
     BigInteger generateRelativePrime(BigInteger n);
-    BigInteger getModInverse(BigInteger n, BigInteger modulus);
+    BigInteger modInverse(BigInteger n, BigInteger modulus);
 }
