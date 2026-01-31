@@ -64,7 +64,7 @@ public class NumberTheoryNaiveTest {
     }
 
     @Test
-    public void testModInverse() {
+    public void testModInverse1() {
         NumberTheory nt = new NumberTheoryNaive();
         BigInteger modulus = new BigInteger("105");
         BigInteger n = new BigInteger("38");
@@ -72,6 +72,14 @@ public class NumberTheoryNaiveTest {
 
         modulus = new BigInteger("152881");
         n = new BigInteger("324539");
+        assertEquals(n.modInverse(modulus), nt.modInverse(n, modulus));
+    }
+
+    @Test
+    public void testModInverse2() {
+        NumberTheory nt = new NumberTheoryNaive();
+        BigInteger modulus = new BigInteger("32076");
+        BigInteger n = new BigInteger("211");
         assertEquals(n.modInverse(modulus), nt.modInverse(n, modulus));
     }
 }

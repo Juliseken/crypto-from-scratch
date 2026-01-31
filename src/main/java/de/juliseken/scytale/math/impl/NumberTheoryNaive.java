@@ -83,6 +83,9 @@ public class NumberTheoryNaive implements NumberTheory {
             r3 = r1.mod(r2);
         }
 
+        if (y2.compareTo(BigInteger.ZERO) < 0) {
+            y2 = y2.add(modulus);
+        }
         return y2;
     }
 }
