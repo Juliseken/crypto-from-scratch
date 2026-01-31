@@ -7,6 +7,12 @@ import de.juliseken.scytale.math.api.NumberTheory;
 
 public class NumberTheoryNaive implements NumberTheory {
 
+    private BigInteger randomBigInteger(int bitLength, Random random) {
+        BigInteger n = new BigInteger(bitLength, random);
+        n = n.setBit(bitLength - 1);
+        return n;
+    }
+
     public boolean isPrime(BigInteger n) {
         BigInteger d = new BigInteger("2");
         boolean divisorFound = false;
@@ -30,15 +36,13 @@ public class NumberTheoryNaive implements NumberTheory {
         return n;
     }
 
-    public BigInteger generatePrime() {
+    public BigInteger generatePrime(int bitLength) {
         Random random = new Random();
-        int randomInt;
-        BigInteger p;
+        BigInteger n;
         do {
-            randomInt = random.nextInt(Integer.MAX_VALUE);
-            p = BigInteger.valueOf(randomInt);
-        } while (!isPrime(p));
-        return p;
+            n = randomBigInteger(bitLength, random);
+        } while (!isPrime(n));
+        return n;
     }
 
     public BigInteger generateRelativePrime(BigInteger n) {

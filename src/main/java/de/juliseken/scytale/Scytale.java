@@ -20,7 +20,7 @@ public class Scytale {
     public static void main(String[] args) {
         System.out.println("Hello Scytale!");
 
-        RSAKeyPair keyPair = new RSAKeyPairGenerator().generate(new NumberTheoryNaive());
+        RSAKeyPair keyPair = new RSAKeyPairGenerator().generate(new NumberTheoryNaive(), 64);
         RSAKeyWriter writer = new RSAKeyWriter();
         try {
             writer.write(keyPair.getPrivateKey(), "rsa-naive");

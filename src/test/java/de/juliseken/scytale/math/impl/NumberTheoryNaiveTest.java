@@ -46,12 +46,12 @@ public class NumberTheoryNaiveTest {
     @Test
     public void testGeneratePrime() {
         NumberTheory nt = new NumberTheoryNaive();
-        assert(nt.isPrime(nt.generatePrime()));
-        assert(nt.isPrime(nt.generatePrime()));
-        assert(nt.isPrime(nt.generatePrime()));
-        assert(nt.isPrime(nt.generatePrime()));
-        assert(nt.isPrime(nt.generatePrime()));
-        assert(nt.isPrime(nt.generatePrime()));
+        assert(nt.isPrime(nt.generatePrime(32)));
+        assert(nt.isPrime(nt.generatePrime(32)));
+        assert(nt.isPrime(nt.generatePrime(32)));
+        assert(nt.isPrime(nt.generatePrime(32)));
+        assert(nt.isPrime(nt.generatePrime(32)));
+        assert(nt.isPrime(nt.generatePrime(32)));
     }
 
     @Test

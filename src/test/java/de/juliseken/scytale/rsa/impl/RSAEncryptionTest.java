@@ -16,7 +16,7 @@ public class RSAEncryptionTest {
 
     @Test
     public void testEncrypt() {
-        RSAKeyPair keyPair = new RSAKeyPairGenerator().generate(new NumberTheoryNaive());
+        RSAKeyPair keyPair = new RSAKeyPairGenerator().generate(new NumberTheoryNaive(), 64);
         Message message = new MessageImpl(new BigInteger("88"));
 
         PublicKeyEncryption<RSAPrivateKey, RSAPublicKey> encryption = new RSAEncryption();

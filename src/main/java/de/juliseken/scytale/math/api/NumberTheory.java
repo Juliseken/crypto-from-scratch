@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public interface NumberTheory {
     BigInteger gcd(BigInteger n, BigInteger m);
     boolean isPrime(BigInteger n);
-    BigInteger generatePrime();
+    BigInteger generatePrime(int bitLength);
     BigInteger generateRelativePrime(BigInteger n);
     BigInteger modInverse(BigInteger n, BigInteger modulus);
 }
