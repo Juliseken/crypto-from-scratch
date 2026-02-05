@@ -24,7 +24,7 @@ public class RSAKeyIOTest {
         RSAKeyReader r = new RSAKeyReader();
 
         w.write(pub, pubPath.toString());
-        RSAPublicKey pubFromFile = r.readPublic(pubPath.toString());
+        RSAPublicKey pubFromFile = r.readPublic(pubPath);
 
         assertEquals(pub, pubFromFile);
     }
@@ -37,7 +37,7 @@ public class RSAKeyIOTest {
         RSAKeyReader r = new RSAKeyReader();
 
         w.write(priv, privPath.toString());
-        RSAPrivateKey privFromFile = r.readPrivate(privPath.toString());
+        RSAPrivateKey privFromFile = r.readPrivate(privPath);
 
         assertEquals(priv, privFromFile);
     }

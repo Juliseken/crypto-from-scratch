@@ -14,19 +14,19 @@ import de.juliseken.scytale.rsa.impl.RSAPublicKeyImpl;
 
 public class RSAKeyReader {
 
-    public RSAPrivateKey readPrivate(String filepath) throws IOException {
+    public RSAPrivateKey readPrivate(Path filepath) throws IOException {
         BigInteger[] values = readModulusAndExponent(filepath);
         return new RSAPrivateKeyImpl(values[0], values[1]);
     }
 
-    public RSAPublicKey readPublic(String filepath) throws IOException {
+    public RSAPublicKey readPublic(Path filepath) throws IOException {
         BigInteger[] values = readModulusAndExponent(filepath);
         return new RSAPublicKeyImpl(values[0], values[1]);
     }
     
-    private BigInteger[] readModulusAndExponent(String filepath) throws IOException {
+    private BigInteger[] readModulusAndExponent(Path filepath) throws IOException {
         Properties props = new Properties();
-        try (Reader r = Files.newBufferedReader(Path.of(filepath))) {
+        try (Reader r = Files.newBufferedReader(filepath)) {
             props.load(r);
         }
         String expStr = props.getProperty("exponent");
