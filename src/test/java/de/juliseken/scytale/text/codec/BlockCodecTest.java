@@ -35,4 +35,15 @@ public class BlockCodecTest {
 
         assertEquals(c, decoded);
     }
+
+    @Test
+    public void testCipherTextBlockIO2() throws IOException {
+        CipherText c = new CipherTextImpl(new BigInteger("2178089801"));
+        CipherTextBlockCodec codec = new CipherTextBlockCodec(4);
+        
+        byte[] block = codec.toBytes(c);
+        CipherText decoded = codec.fromBytes(block);
+
+        assertEquals(c, decoded);
+    }
 }
