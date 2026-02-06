@@ -9,7 +9,8 @@ import de.juliseken.scytale.cli.VersionProvider;
 import de.juliseken.scytale.math.impl.NumberTheoryNaive;
 import de.juliseken.scytale.rsa.impl.RSAKeyPair;
 import de.juliseken.scytale.rsa.impl.RSAKeyPairGenerator;
-import de.juliseken.scytale.rsa.io.RSAKeyWriter;
+import de.juliseken.scytale.rsa.io.api.RSAKeyWriter;
+import de.juliseken.scytale.rsa.io.impl.RSAPropertiesKeyWriter;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -24,7 +25,7 @@ public class RsaNaiveKeygenCommand implements Runnable {
 
     public void run() {
         RSAKeyPairGenerator generator = new RSAKeyPairGenerator();
-        RSAKeyWriter w = new RSAKeyWriter();
+        RSAKeyWriter w = new RSAPropertiesKeyWriter();
 
         RSAKeyPair keyPair = generator.generate(new NumberTheoryNaive(), bitLength);
         if (outDir == null) {
@@ -32,8 +33,8 @@ public class RsaNaiveKeygenCommand implements Runnable {
         }
         try {
             Files.createDirectories(outDir);
-            w.write(keyPair.getPrivateKey(), outDir + "/rsa-naive");
-            w.write(keyPair.getPublicKey(), outDir + "/rsa-naive.pub");
+            w.writePrivate(keyPair.getPrivateKey(), outDir.resolve("rsa-naive"));
+            w.writePublic(keyPair.getPublicKey(), outDir.resolve("rsa-naive.pub"));
         } catch (IOException e) {
             e.printStackTrace();
         }

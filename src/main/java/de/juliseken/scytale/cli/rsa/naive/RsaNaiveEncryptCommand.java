@@ -10,7 +10,8 @@ import de.juliseken.scytale.key.api.PublicKeyEncryption;
 import de.juliseken.scytale.rsa.api.RSAPrivateKey;
 import de.juliseken.scytale.rsa.api.RSAPublicKey;
 import de.juliseken.scytale.rsa.impl.RSAEncryption;
-import de.juliseken.scytale.rsa.io.RSAKeyReader;
+import de.juliseken.scytale.rsa.io.api.RSAKeyReader;
+import de.juliseken.scytale.rsa.io.impl.RSAPropertiesKeyReader;
 import de.juliseken.scytale.text.api.CipherText;
 import de.juliseken.scytale.text.api.Message;
 import de.juliseken.scytale.text.codec.CipherTextBlockCodec;
@@ -38,7 +39,7 @@ public class RsaNaiveEncryptCommand implements Runnable {
                 .resolve(".ssh").resolve("rsa-naive.pub");
         }
 
-        RSAKeyReader keyReader = new RSAKeyReader();
+        RSAKeyReader keyReader = new RSAPropertiesKeyReader();
         BlockInput blockInput = new BlockInput();
         BlockOutput blockOutput = new BlockOutput();
         PublicKeyEncryption<RSAPrivateKey, RSAPublicKey> rsaEncryption = new RSAEncryption();
