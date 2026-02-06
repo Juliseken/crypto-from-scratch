@@ -22,10 +22,10 @@ import picocli.CommandLine.Option;
 @Command(name = "decrypt")
 public class RsaNaiveDecryptCommand implements Runnable {
 
-    @Option(names = {"-i", "--in-file"}, required = true)
+    @Option(names = {"-i", "--in-file"}, required = false)
     Path input;
 
-    @Option(names = {"-o", "--out-file"}, required = true)
+    @Option(names = {"-o", "--out-file"}, required = false)
     Path output;
 
     @Option(names = {"-k", "--key-file"}, required = false)
@@ -52,7 +52,12 @@ public class RsaNaiveDecryptCommand implements Runnable {
             CipherTextBlockCodec cipherTextCodec = new CipherTextBlockCodec(cipherTextBlockSize);
             MessageBlockCodec messageCodec = new MessageBlockCodec(messageBlockSize);
 
-            List<byte[]> cipherBlocks = blockInput.readBlocks(input, cipherTextBlockSize, false);
+            List<byte[]> cipherBlocks;
+            if (input == null) {
+                cipherBlocks = blockInput.readBlocks(System.in, cipherTextBlockSize, false);
+            } else {
+                cipherBlocks = blockInput.readBlocks(input, cipherTextBlockSize, false);
+            }
             List<CipherText> cipherTexts = cipherBlocks.stream()
                 .map(cipherTextCodec::fromBytes)
                 .toList();
@@ -64,7 +69,11 @@ public class RsaNaiveDecryptCommand implements Runnable {
             List<byte[]> outBlocks = messages.stream()
                 .map(messageCodec::toBytes)
                 .toList();
-            blockOutput.writeBlocks(outBlocks, output, true);
+            if (output == null) {
+                blockOutput.writeBlocks(outBlocks, System.out, true);
+            } else {
+                blockOutput.writeBlocks(outBlocks, output, true);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
