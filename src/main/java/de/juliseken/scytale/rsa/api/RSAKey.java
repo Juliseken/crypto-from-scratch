@@ -7,4 +7,5 @@ import de.juliseken.scytale.key.api.Key;
 public interface RSAKey extends Key {
     public BigInteger getExponent();
     public BigInteger getModulus();
+    public int getBitLength();
 }

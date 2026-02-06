@@ -22,6 +22,10 @@ public abstract class AbstractRSAKey implements RSAKey {
         return modulus;
     }
 
+    public int getBitLength() {
+        return modulus.bitLength();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
